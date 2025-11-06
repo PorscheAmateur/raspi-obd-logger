@@ -18,3 +18,18 @@ Veepeak OBDCheck BLE+ (Bluetooth Low Energy)
 12V → 5V converter (preferably 3A or higher, stable)
 
 MicroSD card (Class 10 recommended)
+
+
+**🧩 High-Level Design**
+
+**Component	Purpose**
+
+OBDCheck BLE+:	Collect vehicle telemetry data via OBD-II (Bluetooth LE)
+
+Raspberry Pi 4B:	Runs Python script to log data
+
+Python + obd library:	Handles OBD-II communication & logging
+
+systemd service:	Auto-start logging on boot
+
+File logging:	CSV or SQLite database for structured data
