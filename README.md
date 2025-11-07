@@ -1,35 +1,37 @@
 # raspi-obd-logger
-**🚗 Project Overview**
+
+**🚗 Raspberry Pi OBD-II Data Logger**
+
+A complete guide to setting up a Raspberry Pi 4B with a Veepeak OBDCheck BLE+ for automatic vehicle data logging.
 
 
-**Goal:**
+**🧭 Overview**
 
-Automatically start OBD-II data logging when the ignition turns ON (12V -> Pi powers up) and stop cleanly when the ignition turns OFF (Pi shuts down).
-
-
-**Hardware:**
-
-Raspberry Pi 4B (2GB)
-
-Veepeak OBDCheck BLE+ (Bluetooth Low Energy)
-
-12V ignition-controlled outlet
-
-12V → 5V converter (preferably 3A or higher, stable)
-
-MicroSD card (Class 10 recommended)
+- This project sets up a Raspberry Pi 4B (2GB) to connect wirelessly to a Veepeak OBDCheck BLE+ adapter and log live vehicle data (RPM, speed, coolant temperature, throttle position, etc.) into timestamped CSV files.
+- When powered by an ignition-controlled 12V source, the Pi automatically boots and begins logging. When the vehicle is turned off, logging concludes cleanly.
 
 
-**🧩 High-Level Design**
+**🧰 Hardware Required**
 
-**Component	Purpose**
+- Raspberry Pi 4B (2GB or higher)	Running Raspberry Pi OS Bookworm
+- MicroSD Card (16GB or larger)	For OS and scripts
+- Veepeak OBDCheck BLE+	Bluetooth Low Energy OBD-II adapter
+- 12V to 5V USB-C Converter	Ignition-controlled power to Pi
+- Optional: Wi-Fi connection	For SSH access or Git sync
 
-OBDCheck BLE+:	Collect vehicle telemetry data via OBD-II (Bluetooth LE)
 
-Raspberry Pi 4B:	Runs Python script to log data
+**⚙️ Software Setup**
+**1. Flash Raspberry Pi OS**
 
-Python + obd library:	Handles OBD-II communication & logging
+Use the Raspberry Pi Imager to install Raspberry Pi OS (Bookworm) on your microSD card.
+Before writing, set:
 
-systemd service:	Auto-start logging on boot
+**- Hostname:** _raspberrypi_
 
-File logging:	CSV or SQLite database for structured data
+**- Enable SSH**
+
+**- Set username and password**
+
+**- Configure Wi-Fi** (optional)
+
+Then insert the SD card into your Pi and power it up.
